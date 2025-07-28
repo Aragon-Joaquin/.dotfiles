@@ -5,20 +5,21 @@ using with gnu stow (ln -s)
 
 ## how to use it
 
-**if want to install:**
+#### if want to install my configs
+
 1) go to $HOME path and clone the repo (or fork it)
 2) install [gnu stow](https://www.gnu.org/software/stow/) (with arch: sudo pacman -S stow)
 3) delete or move the folders to another locations (if installing nvim, go to ~/.config/nvim and delete its containing files)
 4) in the .dotfiles folder, use:
 ```sh
-$ stow folder //ex: stow nvim
+$ stow folder #ex: stow nvim
 ```
 
 5) now that folder is a reference to your config. you can change whatever you want and it'll be reflected
 
 ---
 
-**if want to add a folder**
+#### if want to add a new config
 
 1) create a .dotfiles folder on $HOME path 
 2) use this convention:
