@@ -91,7 +91,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4 --autoidentation to 4
 vim.opt.expandtab = true --tabs to spaces
-
+vim.opt.cmdheight = 0
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -786,32 +786,23 @@ require('lazy').setup({
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
         javascript = { 'prettier' },
+        javascriptreact = { 'prettier' },
         typescript = { 'prettier' },
+        typescriptreact = { 'prettier' },
       },
 
       formatters = {
         prettier = {
           prepend_args = {
-            '--print-width',
-            '160', -- Example: Set max line length to 100
-            '--tab-width',
-            '4',
-            '--use-tabs',
-            'true',
-            '--semi',
-            'false', -- Example: Always add semicolons
-            '--single-quote',
-            'true',
-            '--trailing-comma',
-            'es5', -- Example: Always add trailing commas where valid
             '--bracket-spacing',
-            'true', -- Example: Add spaces inside object/array brackets
-            '--jsx-bracket-same-line',
-            'false', -- Example: New line for JSX closing bracket
-            '--arrow-parens',
-            'always',
-            '--end-of-line',
-            'lf', -- Linux-style line endings
+            'true',
+            '--print-width',
+            '120',
+            '--no-semi',
+            '--single-quote',
+            '--trailing-comma',
+            'none',
+            '--use-tabs',
           },
         },
       },
