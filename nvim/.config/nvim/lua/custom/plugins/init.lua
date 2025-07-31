@@ -10,10 +10,19 @@ return {
       -- highlightColor = { link = "Comment" },
     },
   },
+  { 'EdenEast/nightfox.nvim' }, -- colorscheme
   {
-    'rebelot/kanagawa.nvim',
-    opts = {
-      transparent = false,
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = { 'OXY2DEV/markview.nvim' },
+    lazy = false,
+    preview = {
+      icon_provider = 'devicons', -- "mini" or "devicons"
+    },
+    -- For `nvim-treesitter` users.
+    priority = 49,
+    keys = {
+      { '<leader>mv', '<cmd>Markview splitOpen<CR>', desc = 'Open Markview Split' },
+      { '<leader>mc', '<cmd>Markview splitClose<CR>', desc = 'Close Markview Split' },
     },
   },
 }

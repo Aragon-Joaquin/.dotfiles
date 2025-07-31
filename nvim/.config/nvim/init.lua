@@ -352,7 +352,8 @@ require('lazy').setup({
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = '[J] Harpoon utils' },
+        { '<leader>h', group = '[H]arpoon utils' },
+        { '<leader>m', group = '[M]arkdown utils' },
         --{ '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
@@ -926,7 +927,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'kanagawa-wave'
+      vim.cmd.colorscheme 'carbonfox'
     end,
   },
 
