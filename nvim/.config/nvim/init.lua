@@ -1,3 +1,11 @@
+-- WARN : Neotree config to disable default file explorer
+-- Going on top prolly cuz im going to disable it eventually and this config is critical
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 --[[
 
 =====================================================================
@@ -92,6 +100,11 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4 --autoidentation to 4
 vim.opt.expandtab = true --tabs to spaces
 vim.opt.cmdheight = 0
+
+-- Enables by default the spell checker of vim. "z=" for suggestions
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
+
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -354,6 +367,8 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = '[H]arpoon utils' },
         { '<leader>m', group = '[M]arkdown utils' },
+        { '<leader>a', group = '[A]vante' },
+        { '<leader>e', group = 'Nvim Tr[E]e ???' },
         --{ '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
@@ -373,7 +388,6 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         'nvim-telescope/telescope-fzf-native.nvim',
-
         -- `build` is used to run some command when the plugin is installed/updated.
         -- This is only run then, not every time Neovim starts up.
         build = 'make',
@@ -474,7 +488,6 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
