@@ -710,10 +710,11 @@ require('lazy').setup({
         ts_ls = {},
         ast_grep = {},
         eslint = {},
-        gopls = {},
+        gopls = {
+          semanticTokens = true,
+        },
+        clangd = {},
         --     vim.lsp.enable 'ast_grep',
-
-        --
 
         lua_ls = {
           -- cmd = { ... },
@@ -787,7 +788,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {} --  c = true, cpp = true
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -808,6 +809,7 @@ require('lazy').setup({
         javascriptreact = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
+        c = { 'clang-format' },
       },
 
       formatters = {
@@ -992,12 +994,17 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    branch = 'main',
+    lazy = false,
+    --main = 'nvim-treesitter.configs', --  this is broken :/
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+
+    --event = { 'LazyFile', 'VeryLazy' },
+    cmd = { 'TSUpdate', 'TSInstall', 'TSLog', 'TSUninstall' },
+    opts_extend = { 'ensure_installed' },
+
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
+      indent = { enable = true, disable = { 'ruby' } },
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
@@ -1005,7 +1012,36 @@ require('lazy').setup({
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      folds = { enable = true },
+      ensure_installed = {
+        'go',
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'javascript',
+        'jsdoc',
+        'json',
+        'jsonc',
+        'lua',
+        'luadoc',
+        'luap',
+        'markdown',
+        'markdown_inline',
+        'printf',
+        'python',
+        'query',
+        'regex',
+        'toml',
+        'tsx',
+        'typescript',
+        'vim',
+        'vimdoc',
+        'xml',
+        'yaml',
+      },
+      -- Autoinstall languages that are not installed
+      auto_install = true,
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
