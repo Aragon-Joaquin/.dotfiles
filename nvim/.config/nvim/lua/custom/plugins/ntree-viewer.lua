@@ -9,7 +9,15 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
-    require('nvim-tree').setup {}
+    require('nvim-tree').setup {
+      view = {
+        side = 'right',
+      },
+      renderer = {
+        highlight_git = true,
+        highlight_opened_files = 'all',
+      },
+    }
   end,
 
   keys = {

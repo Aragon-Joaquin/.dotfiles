@@ -15,7 +15,12 @@ return {
     build = ':Cord update',
     -- opts = {}
   }, --NOTE: discord rich presence
-  { 'github/copilot.vim' }, --NOTE: copilot chatpgt ahhh
+  {
+    'github/copilot.vim',
+    init = function()
+      vim.g.copilot_enabled = false
+    end,
+  }, --NOTE: copilot chatpgt ahhh
   { 'folke/twilight.nvim', opts = {}, keys = {
     { '<leader>tt', '<cmd>Twilight<cr>', desc = 'Toggle Twilight' },
   } },
