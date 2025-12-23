@@ -320,6 +320,16 @@ require('lazy').setup({
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    keys = {
+      {
+        '<leader>?',
+        function()
+          require('which-key').show { global = false }
+        end,
+        desc = 'help!! (which-key)',
+      },
+    },
+
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
       -- this setting is independent of vim.o.timeoutlen
@@ -366,6 +376,8 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = '[H]arpoon utils' },
+        { '<leader>x', group = '[X]Trouble' },
+        { '<leader>b', group = '[B]arBar (do not.)' },
         { '<leader>m', group = '[M]arkdown utils' },
         { '<leader>a', group = '[A]vante' },
         { '<leader>e', group = 'Nvim Tr[E]e ???' },
@@ -864,7 +876,6 @@ require('lazy').setup({
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
-    --- @type blink.cmp.Config
     opts = {
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions

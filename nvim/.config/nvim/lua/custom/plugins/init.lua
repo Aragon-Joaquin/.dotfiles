@@ -1,6 +1,5 @@
--- here only goes packages that only requires a easy setup
+-- here only goes packages that only requires an easy setup
 return {
-  --{ 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'tris203/precognition.nvim',
     --event = "VeryLazy",
@@ -17,11 +16,7 @@ return {
     -- opts = {}
   }, --NOTE: discord rich presence
   { 'github/copilot.vim' }, --NOTE: copilot chatpgt ahhh
-  {
-    'folke/twilight.nvim',
-    opts = {},
-    keys = {
-      { '<leader>tt', '<cmd>Twilight<cr>', desc = 'Toggle Twilight' },
-    },
-  },
+  { 'folke/twilight.nvim', opts = {}, keys = {
+    { '<leader>tt', '<cmd>Twilight<cr>', desc = 'Toggle Twilight' },
+  } },
 }
