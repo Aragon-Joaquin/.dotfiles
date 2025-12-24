@@ -1014,46 +1014,59 @@ require('lazy').setup({
     cmd = { 'TSUpdate', 'TSInstall', 'TSLog', 'TSUninstall' },
     opts_extend = { 'ensure_installed' },
 
-    opts = {
-      indent = { enable = true, disable = { 'ruby' } },
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      folds = { enable = true },
-      ensure_installed = {
-        'go',
-        'bash',
-        'c',
-        'diff',
-        'html',
-        'javascript',
-        'jsdoc',
-        'json',
-        'jsonc',
-        'lua',
-        'luadoc',
-        'luap',
-        'markdown',
-        'markdown_inline',
-        'printf',
-        'python',
-        'query',
-        'regex',
-        'toml',
-        'tsx',
-        'typescript',
-        'vim',
-        'vimdoc',
-        'xml',
-        'yaml',
-      },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-    },
+    event = { 'BufReadPost', 'BufNewFile' },
+    opts = function()
+      vim.api.nvim_create_autocmd('BufReadPost', {
+        callback = function()
+          local bufnr = vim.api.nvim_get_current_buf()
+          local ok, _ = pcall(vim.treesitter.start, bufnr)
+
+          if not ok then
+            vim.cmd 'syntax sync fromstart'
+          end
+        end,
+      })
+      return {
+        indent = { enable = true, disable = { 'ruby' } },
+        highlight = {
+          enable = true,
+          -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+          --  If you are experiencing weird indenting issues, add the language to
+          --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+          additional_vim_regex_highlighting = { 'ruby' },
+        },
+        folds = { enable = true },
+        ensure_installed = {
+          'go',
+          'bash',
+          'c',
+          'diff',
+          'html',
+          'javascript',
+          'jsdoc',
+          'json',
+          'jsonc',
+          'lua',
+          'luadoc',
+          'luap',
+          'markdown',
+          'markdown_inline',
+          'printf',
+          'python',
+          'query',
+          'regex',
+          'toml',
+          'tsx',
+          'typescript',
+          'vim',
+          'vimdoc',
+          'xml',
+          'yaml',
+        },
+        -- Autoinstall languages that are not installed
+        auto_install = true,
+      }
+    end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
