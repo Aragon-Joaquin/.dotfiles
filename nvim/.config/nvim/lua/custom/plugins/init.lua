@@ -17,6 +17,7 @@ return {
   }, --NOTE: discord rich presence
   {
     'github/copilot.vim',
+    enabled = false,
     init = function()
       vim.g.copilot_enabled = false
     end,
