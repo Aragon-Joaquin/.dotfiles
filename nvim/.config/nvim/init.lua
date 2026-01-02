@@ -6,6 +6,12 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+-- autoreload file if its contents have changed
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'CursorHoldI', 'FocusGained' }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { '*' },
+})
 --[[
 
 =====================================================================
@@ -435,17 +441,26 @@ require('lazy').setup({
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
 
+      local actions = require 'telescope.actions'
+      -- local builtin = require('telescope.builtin')
+
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
-        --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        --   All the info you're looking for is in `:help telescope.setup()`
+        defaults = {
+          mappings = {
+            i = {
+              ['<c-enter>'] = 'to_fuzzy_refine',
+              ['<c-d>'] = actions.delete_buffer,
+            },
+            n = {
+              ['<c-d>'] = actions.delete_buffer,
+              ['dd'] = actions.delete_buffer,
+            },
+          },
+        },
         -- pickers = {
         --   find_files = {
         --     theme = 'ivy',

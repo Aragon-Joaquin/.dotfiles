@@ -25,4 +25,8 @@ return {
   { 'folke/twilight.nvim', opts = {}, keys = {
     { '<leader>tt', '<cmd>Twilight<cr>', desc = 'Toggle Twilight' },
   } },
+  {
+    -- vim plugin that allows multiple cursors for simultaneous editing.
+    'mg979/vim-visual-multi',
+  },
 }
