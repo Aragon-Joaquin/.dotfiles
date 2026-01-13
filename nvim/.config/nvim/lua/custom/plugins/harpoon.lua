@@ -33,7 +33,7 @@ return {
       -- Add keymaps for navigating to specific harpooned files
       for i = 1, 5 do
         table.insert(keys, {
-          '<leader>h' .. i,
+          '<leader>' .. i,
           function()
             require('harpoon'):list():select(i)
           end,

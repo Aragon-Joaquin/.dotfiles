@@ -9,7 +9,6 @@ return {
       -- highlightColor = { link = "Comment" },
     },
   },
-  { 'EdenEast/nightfox.nvim' }, --NOTE: colorscheme
   {
     'vyfor/cord.nvim',
     build = ':Cord update',

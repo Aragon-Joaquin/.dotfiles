@@ -12,6 +12,13 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'CursorHoldI', 'FocusGai
   command = "if mode() != 'c' | checktime | endif",
   pattern = { '*' },
 })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
 --[[
 
 =====================================================================
@@ -734,14 +741,17 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
+
         ast_grep = {},
-        eslint = {},
+        -- eslint = {},
         gopls = {
           settings = {
             gopls = {},
           },
         },
 
+        tailwindcss = {},
+        svelte = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -833,6 +843,8 @@ require('lazy').setup({
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
         javascript = { 'prettier' },
         javascriptreact = { 'prettier' },
+        css = { 'prettier' },
+        json = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
         c = { 'clang-format' },
@@ -973,7 +985,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'carbonfox'
+      vim.cmd.colorscheme 'moonfly'
     end,
   },
 
@@ -1022,7 +1034,7 @@ require('lazy').setup({
     build = ':TSUpdate',
     branch = 'main',
     lazy = false,
-    --main = 'nvim-treesitter.configs', --  this is broken :/
+    main = 'nvim-treesitter.config', --  this is broken :/
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
     --event = { 'LazyFile', 'VeryLazy' },
@@ -1042,16 +1054,20 @@ require('lazy').setup({
         end,
       })
       return {
-        indent = { enable = true, disable = { 'ruby' } },
+        indent = {
+          enable = true,
+          --disable = { 'ruby' }
+        },
         highlight = {
           enable = true,
           -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
           --  If you are experiencing weird indenting issues, add the language to
           --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-          additional_vim_regex_highlighting = { 'ruby' },
+          --          additional_vim_regex_highlighting = { 'ruby' },
         },
         folds = { enable = true },
         ensure_installed = {
+          'css',
           'go',
           'bash',
           'c',
