@@ -714,7 +714,6 @@ require('lazy').setup({
           end,
         },
       }
-
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -742,7 +741,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
 
-        ast_grep = {},
+        -- ast_grep = {},
         -- eslint = {},
         gopls = {
           settings = {
@@ -829,8 +828,8 @@ require('lazy').setup({
           return nil
         else
           return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
+            timeout_ms = 20000500,
+            lsp_format = true,
           }
         end
       end,
@@ -841,14 +840,19 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+
+        --web
+        html = { 'prettier' },
+        css = { 'cssls', 'prettier' },
         javascript = { 'prettier' },
         javascriptreact = { 'prettier' },
-        css = { 'prettier' },
-        json = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
+
+        --extras
         c = { 'clang-format' },
         go = { 'goimports', 'gofumpt' },
+        json = { 'prettier' },
       },
 
       formatters = {
