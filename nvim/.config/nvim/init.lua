@@ -19,8 +19,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     client.server_capabilities.semanticTokensProvider = nil
   end,
 })
---[[
 
+--[[
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -739,8 +739,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
 
+        -- unused. for now
+        -- ts_ls = {}, -- i have a plugin for this since its a pain in the ass to make it to organize imports
         -- ast_grep = {},
         -- eslint = {},
         gopls = {
