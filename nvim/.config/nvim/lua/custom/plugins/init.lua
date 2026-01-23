@@ -24,30 +24,4 @@ return {
   { 'folke/twilight.nvim', opts = {}, keys = {
     { '<leader>tt', '<cmd>Twilight<cr>', desc = 'Toggle Twilight' },
   } },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-
-    config = function()
-      require('typescript-tools').setup {
-        settings = {
-          expose_as_code_action = 'all',
-          tsserver_file_preferences = {
-            includeCompletionsForModuleExports = true,
-
-            unusedVariablesAlphaFade = true,
-          },
-        },
-        on_attach = function(_, bufnr)
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            buffer = bufnr,
-            callback = function()
-              vim.cmd 'TSToolsOrganizeImports'
-            end,
-          })
-        end,
-      }
-    end,
-    opts = {},
-  },
 }

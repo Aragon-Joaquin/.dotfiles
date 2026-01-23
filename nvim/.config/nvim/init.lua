@@ -13,13 +13,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'CursorHoldI', 'FocusGai
   pattern = { '*' },
 })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
-})
-
 --[[
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -659,6 +652,8 @@ require('lazy').setup({
               callback = vim.lsp.buf.document_highlight,
             })
 
+            client.server_capabilities.semanticTokensProvider = nil --NOTE: CUSTOM, CAN BE DELETED
+
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -683,6 +678,17 @@ require('lazy').setup({
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+        end,
+      })
+
+      --NOTE: CUSTOM AS WELL
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = { '*.ts', '*.tsx', '*.js', '*.jsx' },
+        callback = function()
+          vim.lsp.buf.code_action {
+            context = { only = { 'source.organizeImports' } },
+            apply = true,
+          }
         end,
       })
 
@@ -741,7 +747,7 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
 
         -- unused. for now
-        -- ts_ls = {}, -- i have a plugin for this since its a pain in the ass to make it to organize imports
+        ts_ls = {},
         -- ast_grep = {},
         -- eslint = {},
         gopls = {
