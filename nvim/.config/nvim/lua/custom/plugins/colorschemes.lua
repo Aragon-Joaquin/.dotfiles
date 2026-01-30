@@ -11,7 +11,16 @@ return {
       saturation = 0.9,
     },
   },
-  { 'bluz71/vim-moonfly-colors', name = 'moonfly', lazy = false, priority = 1000 },
+  {
+    'bluz71/vim-moonfly-colors',
+    name = 'moonfly',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- colorscheme
+      vim.cmd.colorscheme 'moonfly'
+    end,
+  },
   {
     'slugbyte/lackluster.nvim',
     lazy = false,
