@@ -1,9 +1,10 @@
 --NOTE: colorschemes.
 return {
 
-  { 'EdenEast/nightfox.nvim' }, -- only carbonfox is good
+  { 'EdenEast/nightfox.nvim', enable = false }, -- only carbonfox is good
   {
     'scottmckendry/cyberdream.nvim',
+    enable = false,
     lazy = false,
     priority = 1000,
     config = {
@@ -23,6 +24,7 @@ return {
   },
   {
     'slugbyte/lackluster.nvim',
+    enable = false,
     lazy = false,
     priority = 1000,
     init = function()

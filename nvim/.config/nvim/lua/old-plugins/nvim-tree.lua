@@ -1,6 +1,4 @@
---NOTE: I feel inept. This isn't who i wanted to be.
-
--- the tree is so annoying
+-- TEST:  old tree:
 return {
   'nvim-tree/nvim-tree.lua',
   version = '*',
