@@ -1,0 +1,127 @@
+[window]
+dimensions = { columns = 80, lines = 24 }
+padding = { x = 4, y = 0 }
+opacity = 0.2
+blur = true
+
+[font]
+normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
+bold = { family = "IosevkaTerm Nerd Font", style = "bold" }
+italic = { family = "IosevkaTerm Nerd Font", style = "italic" }
+bold_italic = { family = "IosevkaTerm Nerd Font", style = "bold italic" }
+size = 9
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+
+#[colors.primary]
+#foreground = "#ffffff" # White
+#background = "#000000" # Black
+
+#[colors.normal]
+#black = "#000000"
+#red = "#ff3b30"
+#green = "#4cd964"
+#yellow = "#ffcc00"
+#blue = "#007aff"
+#magenta = "#ff2d55"
+#cyan = "#5ac8fa"
+#white = "#ffffff"
+#[colors.bright]
+#black = "#686868"
+#red = "#ff3b30"
+#green = "#4cd964"
+#yellow = "#ffcc00"
+#blue = "#007aff"
+#magenta = "#ff2d55"
+#cyan = "#5ac8fa"
+#white = "#ffffff"
+
+# super key is CTRL + SHIFT + any key
+[keyboard]
+bindings = [
+    # Copy (Cmd + C)
+    { key = "C", mods = "Command", action = "Copy" },
+
+    # Paste (Cmd + V)
+    { key = "V", mods = "Command", action = "Paste" },
+
+    # Find (Cmd + F)
+    { key = "F", mods = "Command", action = "SearchForward" },
+
+    # New Window (Cmd + N)
+    { key = "N", mods = "Command", action = "CreateNewWindow" },
+
+    # Decrease Font Size (Cmd + -)
+    { key = "Minus", mods = "Command", action = "DecreaseFontSize" },
+
+    # Increase Font Size (Cmd + =)
+    { key = "Equals", mods = "Command", action = "IncreaseFontSize" },
+
+    # Reset Font Size (Cmd + 0)
+    { key = "Key0", mods = "Command", action = "ResetFontSize" },
+
+    # Toggle Full Screen (Cmd + Enter)
+    { key = "Return", mods = "Command", action = "ToggleSimpleFullscreen" },
+
+    # Switch to Specific Tab (Cmd + 1 ~ Cmd + 9)
+    { key = "Key1", mods = "Command", action = "SelectTab1" },
+    { key = "Key2", mods = "Command", action = "SelectTab2" },
+    { key = "Key3", mods = "Command", action = "SelectTab3" },
+    { key = "Key4", mods = "Command", action = "SelectTab4" },
+    { key = "Key5", mods = "Command", action = "SelectTab5" },
+    { key = "Key6", mods = "Command", action = "SelectTab6" },
+    { key = "Key7", mods = "Command", action = "SelectTab7" },
+    { key = "Key8", mods = "Command", action = "SelectTab8" },
+    { key = "Key9", mods = "Command", action = "SelectTab9" },
+
+    # Hide Alacritty (Cmd + H)
+    { key = "H", mods = "Command", action = "Hide" },
+
+    # Hide Other Applications (Cmd + Option + H)
+    { key = "H", mods = "Command|Option", action = "HideOtherApplications" },
+
+  { key="ArrowUp", mods="Control|Shift", action="ScrollLineUp" },
+  { key="ArrowDown", mods="Control|Shift", action="ScrollLineDown" },
+]
+
+# moonfly vim
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#949494"
+blue = "#74b2ff"
+cyan = "#85dc85"
+green = "#36c692"
+magenta = "#ae81ff"
+red = "#ff5189"
+white = "#e4e4e4"
+yellow = "#c6c684"
+
+[colors.cursor]
+cursor = "#8e8e8e"
+text = "#080808"
+
+[colors.normal]
+black = "#323437"
+blue = "#80a0ff"
+cyan = "#79dac8"
+green = "#8cc85f"
+magenta = "#cf87e8"
+red = "#ff5d5d"
+white = "#c6c6c6"
+yellow = "#e3c78a"
+
+[colors.primary]
+background = "#080808"
+bright_foreground = "#eeeeee"
+foreground = "#bdbdbd"
+
+[colors.selection]
+background = "#b2ceee"
+text = "#080808"

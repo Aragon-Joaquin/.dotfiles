@@ -566,7 +566,7 @@ require('lazy').setup({
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   { { import = 'custom.plugins' } },
   --  { { import = 'custom.plugins.kickstart' } },
-  --  { { import = 'testing/' } },
+  -- { { import = 'testing/' } },
 
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search

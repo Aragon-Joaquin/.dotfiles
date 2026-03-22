@@ -41,13 +41,4 @@ return {
     event = 'InsertEnter',
     opts = {},
   },
-
-  --NOTE: vertical indentation, maybe disable?
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    ---@module "ibl"
-    ---@type ibl.config
-    opts = {},
-  },
 }

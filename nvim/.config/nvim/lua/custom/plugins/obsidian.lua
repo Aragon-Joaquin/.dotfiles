@@ -41,5 +41,7 @@ return {
     vim.keymap.set('n', '<leader>so', function()
       vim.cmd('edit ' .. os.getenv 'HOME' .. '/notes')
     end, { desc = 'Browse Notes Folder' })
+
+    vim.keymap.set('n', '<leader>O', '<cmd>Obsidian<cr>', { desc = '<O>bsidian' })
   end,
 }

@@ -10,8 +10,7 @@ return {
     build = 'make',
     event = 'VeryLazy',
     version = false, -- Never set this value to "*"! Never!
-    opts = function(_, opts)
-      -- Track avante's internal state during resize
+    opts = function(_, opts) -- Track avante's internal state during resize
       local in_resize = false
       local original_cursor_win = nil
       local avante_filetypes = { 'Avante', 'AvanteInput', 'AvanteAsk', 'AvanteSelectedFiles' }
@@ -172,7 +171,7 @@ return {
         provider = 'gemini',
         providers = {
           gemini = {
-            model = 'gemini-2.5-flash-lite',
+            model = 'gemini-2.5-flash',
             max_tokens = 4096,
             temperature = 0,
           },

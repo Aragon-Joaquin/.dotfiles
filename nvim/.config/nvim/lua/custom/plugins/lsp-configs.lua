@@ -165,6 +165,7 @@ return {
           },
         },
 
+        pyright = {},
         tailwindcss = {},
         svelte = {},
         lua_ls = {
@@ -189,6 +190,7 @@ return {
         'typescript-language-server',
         'gopls',
         'prettier',
+        'pyright',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
