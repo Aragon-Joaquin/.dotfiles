@@ -1,3 +1,16 @@
+# Voidlinux dotfiles for non-programming usage.
+**i did not configure anything yet**
+
+
+adding these .dotfiles later on:
+- mangowm
+- waybar
+- qutebrowser
+- niri (yes i use two window managers)
+- and idk, i'll be updating the current ones
+
+---
+
 this is a .dotfiles folder of my arch config just to manage them between computers easily
 
 using with gnu stow (ln -s)
