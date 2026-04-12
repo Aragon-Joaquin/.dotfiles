@@ -18,7 +18,10 @@ return {
       "neovim/nvim-lspconfig",
     },
     opts = {
-      ensure_installed = { "stylua" },
+      ensure_installed = {
+        "stylua",
+        "jsonls",
+      },
     },
   },
 }
