@@ -123,6 +123,8 @@ return {
           'prettier',
           'shfmt',
           'actionlint',
+          'goimports',
+          'gofumpt',
           'golangci-lint',
         },
 
@@ -132,8 +134,10 @@ return {
       local sources = {
         diagnostics.checkmake,
         formatting.prettier.with { filetypes = { 'html', 'json', 'yaml', 'markdown' } },
-        -- formatting.stylua,
+        formatting.stylua,
         formatting.shfmt.with { args = { '-i', '4' } },
+        formatting.gofumpt,
+        formatting.goimports,
 
         diagnostics.actionlint,
         diagnostics.golangci_lint,

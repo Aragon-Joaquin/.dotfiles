@@ -164,26 +164,36 @@ return {
             gopls = {},
           },
         },
-
         pyright = {},
         tailwindcss = {},
         svelte = {},
+
         lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
+          --alpine error. it's trying to search the musl lib which it does not exists
+          cmd = { '/usr/bin/lua-language-server' },
+          filetypes = { 'lua' },
           -- capabilities = {},
           settings = {
             Lua = {
               completion = {
                 callSnippet = 'Replace',
               },
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { globals = { 'vim' } },
+              workspace = {
+                checkThirdParty = false,
+                library = {
+                  vim.env.VIMRUNTIME,
+                  -- Add other libraries here if needed
+                },
+              },
             },
           },
         },
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
+
+      require('lspconfig').docker_compose_language_service.setup {}
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'tailwindcss-language-server',
@@ -193,6 +203,12 @@ return {
         'pyright',
       })
 
+      for i, v in ipairs(ensure_installed) do
+        -- skip lua_ls since i cant install it via mason
+        if v == 'lua_ls' then
+          table.remove(ensure_installed, i)
+        end
+      end
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
@@ -208,9 +224,16 @@ return {
             --WARN: depending on blink.cmp
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
+            vim.lsp.enable(server_name, true)
           end,
         },
       }
+
+      --NOTE: mason is dumb. it made me do this manually... yes i need to learn lua as well
+      local lua_conf = servers['lua_ls']
+      lua_conf.capabilities = vim.tbl_deep_extend('force', {}, capabilities, lua_conf.capabilities or {})
+      -- require('lspconfig').lua_ls.setup(lua_conf)
+      vim.lsp.enable(lua_conf)
     end,
   },
 }
