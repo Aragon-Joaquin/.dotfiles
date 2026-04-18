@@ -80,7 +80,7 @@
 	},
 	"network": {
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format": "\udb81\udf2e {bandwidthDownBytes} \udb81\udf37 {bandwidthUpBytes}",
+		"format": "\udb81\udf2e {bandwidthDownBits} \udb81\udf37 {bandwidthUpBits}",
 		"format-wifi": "{essid} ({signalStrength}%) ",
 		//"format-ethernet": "{ipaddr}/{cidr} ",
 		//"tooltip-format": "{ifname} via {gwaddr} ",
