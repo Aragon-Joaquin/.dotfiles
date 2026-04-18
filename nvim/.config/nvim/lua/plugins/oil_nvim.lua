@@ -4,6 +4,7 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
+      delete_to_trash = true,
       view_options = {
         show_hidden = true,
       },
@@ -40,6 +41,9 @@ return {
 
     keys = function()
       vim.keymap.set("n", "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+
+      -- using this until i install treesitter
+      vim.keymap.set("n", "<leader>sn", "<CMD>Oil --float ~/.config/nvim<CR>", { desc = "Open parent directory" })
     end,
   },
 }

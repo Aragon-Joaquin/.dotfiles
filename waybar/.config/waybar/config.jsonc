@@ -14,12 +14,13 @@
 		"mpris"
 	],
 	"modules-right": [
+		"custom/uptime",
 		"pulseaudio",
 		"network",
 		"cpu",
 		"memory",
 		// "keyboard-state",
-		"disk",
+		//"disk",
 		"clock",
 		"tray"
 	],
@@ -45,6 +46,7 @@
 		"interval": 1,
 		"format": "{player_icon} {position} | {title} - {artist}",
 		"format-paused": "{status_icon} {dynamic}",
+		"format-stopped": "No Media Playing",
 		"player-icons": {
 			"default": "▶",
 			"mpv": "🎵"
@@ -88,11 +90,11 @@
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float
-		"format": "{volume}% {icon} {format_source}",
+		"format": "{icon} {volume}% {format_source}",
 		"format-bluetooth": "{volume}% {icon} {format_source}",
 		"format-bluetooth-muted": " {icon} {format_source}",
 		"format-muted": " {format_source}",
-		"format-source": "{volume}% ",
+		"format-source": " {volume}%",
 		"format-source-muted": "",
 		"format-icons": {
 			"headphone": "",
@@ -109,28 +111,10 @@
 		},
 		"on-click": "pavucontrol"
 	},
-	"custom/media": {
-		"format": "{icon} {text}",
-		"return-type": "json",
-		"max-length": 40,
-		"format-icons": {
-			"spotify": "",
-			"default": "🎜"
-		},
-		"escape": true,
-		"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-		// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-	},
-	"custom/power": {
-		"format": "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+	"custom/uptime": {
+		"exec": "uptime -p | sed 's/up //'",
+		"interval": 60,
+		//manual padding for the format until i can add a margin without overriding everything
+		"format": " {}"
 	}
 }

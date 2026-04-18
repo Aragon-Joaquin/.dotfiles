@@ -1,0 +1,9 @@
+[change-format]
+        appname = dunstify
+        format = "%I <b>%s</b>\n%b\n%p"
+
+[fullscreen]
+        fullscreen = show
+
+[global]
+    mouse_middle_click = context,close_current
