@@ -19,6 +19,9 @@ vim.g.mapleader = " " -- leader key is SPACE
 vim.opt.clipboard = "unnamedplus" -- copies the nvim buffer to the clipboard ("wl-copy" needed atleast on wayland)
 vim.opt.fillchars = { eob = " " } -- hides the "~" on blank lines
 
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+
 vim.opt.number = true -- show line numbers
 vim.opt.relativenumber = true -- show relative numbers
 
