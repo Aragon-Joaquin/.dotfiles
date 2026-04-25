@@ -157,6 +157,12 @@ return {
         -- ast_grep = {},
         -- eslint = {},
 
+        clangd = {
+          mason = false,
+          cmd = { '/usr/bin/clangd' },
+          settings = {},
+        },
+
         ts_ls = {},
 
         gopls = {
@@ -206,6 +212,10 @@ return {
       for i, v in ipairs(ensure_installed) do
         -- skip lua_ls since i cant install it via mason
         if v == 'lua_ls' then
+          table.remove(ensure_installed, i)
+        end
+
+        if v == 'clangd' then
           table.remove(ensure_installed, i)
         end
       end

@@ -41,6 +41,7 @@ return {
         },
         formatters_by_ft = {
           lua = { 'stylua' },
+          cpp = { 'clang-format' },
 
           html = prettier,
           css = { 'cssls', 'prettier', stop_after_first = true },
@@ -132,13 +133,14 @@ return {
       }
 
       local sources = {
+        -- formatting.prettier.with { filetypes = { 'html', 'json', 'yaml', 'markdown' } },
+        -- formatting.stylua,
+        -- formatting.shfmt.with { args = { '-i', '4' } },
+        -- formatting.gofumpt,
+        -- formatting.goimports,
+        --
         diagnostics.checkmake,
-        formatting.prettier.with { filetypes = { 'html', 'json', 'yaml', 'markdown' } },
-        formatting.stylua,
-        formatting.shfmt.with { args = { '-i', '4' } },
-        formatting.gofumpt,
-        formatting.goimports,
-
+        diagnostics.cpplint,
         diagnostics.actionlint,
         diagnostics.golangci_lint,
 
