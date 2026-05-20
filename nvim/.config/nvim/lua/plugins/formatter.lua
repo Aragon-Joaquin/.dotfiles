@@ -4,9 +4,7 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        json = { "jsonls" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
+        json = { "jq" },
       },
       format_on_save = {
         timeout_ms = 500,

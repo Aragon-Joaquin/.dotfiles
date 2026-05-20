@@ -1,27 +1,44 @@
 return {
+
   {
-    "mason-org/mason-lspconfig.nvim",
-    opts = {},
+    "mason-org/mason.nvim",
     dependencies = {
-      {
-        "mason-org/mason.nvim",
-        opts = {
-          ui = {
-            icons = {
-              package_installed = "✓",
-              package_pending = "➜",
-              package_uninstalled = "✗",
-            },
+      -- lsp
+      "mason-org/mason-lspconfig.nvim",
+      -- formatters/linters
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
           },
         },
-      },
-      "neovim/nvim-lspconfig",
-    },
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "jsonls",
-      },
-    },
+      })
+
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "jsonls",
+          "tailwindcss",
+          "ts_ls",
+          "cssls",
+          "lua_ls",
+          "clangd",
+        },
+      })
+
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "shellcheck",
+          "shfmt",
+          "stylua",
+          "jq",
+          "clang-format",
+        },
+      })
+    end,
   },
 }

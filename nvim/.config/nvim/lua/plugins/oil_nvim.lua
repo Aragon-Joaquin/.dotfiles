@@ -43,7 +43,12 @@ return {
       vim.keymap.set("n", "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
       -- using this until i install treesitter
-      vim.keymap.set("n", "<leader>sn", "<CMD>Oil --float ~/.config/nvim<CR>", { desc = "Open parent directory" })
+      vim.keymap.set(
+        "n",
+        "<leader>sn",
+        "<CMD>Oil --float ~/.config/nvim/lua/plugins<CR>",
+        { desc = "Open parent directory" }
+      )
     end,
   },
 }
