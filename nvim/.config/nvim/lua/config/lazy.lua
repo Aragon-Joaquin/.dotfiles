@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- leader key is SPACE
 vim.opt.clipboard = "unnamedplus" -- copies the nvim buffer to the clipboard ("wl-copy" needed atleast on wayland)
 vim.opt.fillchars = { eob = " " } -- hides the "~" on blank lines
+vim.opt.cmdheight = 0 -- disables the cmd status line
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"

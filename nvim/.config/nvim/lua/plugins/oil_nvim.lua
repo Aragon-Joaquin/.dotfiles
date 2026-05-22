@@ -35,20 +35,10 @@ return {
       },
     },
 
-    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     lazy = false,
 
     keys = function()
       vim.keymap.set("n", "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
-
-      -- using this until i install treesitter
-      vim.keymap.set(
-        "n",
-        "<leader>sn",
-        "<CMD>Oil --float ~/.config/nvim/lua/plugins<CR>",
-        { desc = "Open parent directory" }
-      )
     end,
   },
 }
