@@ -27,16 +27,33 @@ return {
           "cssls",
           "lua_ls",
           "clangd",
+          "pyright",
+          "gopls",
         },
       })
 
       require("mason-tool-installer").setup({
         ensure_installed = {
+          --shell
           "shellcheck",
           "shfmt",
+
+          --lua
           "stylua",
+
+          --json
           "jq",
+
+          --c/c++
           "clang-format",
+
+          --python
+          "black",
+
+          -- go
+          "staticcheck",
+          "goimports",
+          "gofumpt",
         },
       })
     end,

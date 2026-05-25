@@ -84,6 +84,7 @@ return {
         rumdl = {},
         bashls = { filetypes = { "sh", "zsh", "bash" } },
         tombi = {},
+        pyright = {},
         -- gopls = {},
         -- basedpyright = {},
         --[[ ts_ls = {
@@ -104,6 +105,7 @@ return {
       for server, config in pairs(opts.servers) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         vim.lsp.enable(server)
+
         vim.lsp.config(server, config)
       end
 

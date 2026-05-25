@@ -1,0 +1,138 @@
+--TODO: for SOME reason it does not execute the "ensure_installed"
+
+local parsers = {
+  --default
+  "bash",
+  "c",
+  "diff",
+  "html",
+  "javascript",
+  "jsdoc",
+  "json",
+  "lua",
+  "luadoc",
+  "luap",
+  "markdown",
+  "markdown_inline",
+  "printf",
+  "python",
+  "query",
+  "regex",
+  "toml",
+  "tsx",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "xml",
+  "yaml",
+
+  -- added
+  "scheme",
+  "go",
+}
+
+return {
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   lazy = false,
+  --   build = ":TSUpdate",
+  --   opts = {
+  --
+  --     indent = { enable = true }, ---@type lazyvim.TSFeat
+  --     highlight = { enable = true }, ---@type lazyvim.TSFeat
+  --     folds = { enable = true }, ---@type lazyvim.TSFeat
+  --     auto_install = true,
+  --     ensure_installed = {
+  --       --default
+  --       "bash",
+  --       "c",
+  --       "diff",
+  --       "html",
+  --       "javascript",
+  --       "jsdoc",
+  --       "json",
+  --       "lua",
+  --       "luadoc",
+  --       "luap",
+  --       "markdown",
+  --       "markdown_inline",
+  --       "printf",
+  --       "python",
+  --       "query",
+  --       "regex",
+  --       "toml",
+  --       "tsx",
+  --       "typescript",
+  --       "vim",
+  --       "vimdoc",
+  --       "xml",
+  --       "yaml",
+  --
+  --       -- added
+  --       "scheme",
+  --       "go",
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require("nvim-treesitter").setup(opts)
+  --   end,
+  -- },
+
+  --NOTE: kickstarter treesitter config... it works for them...
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    branch = "main",
+    config = function()
+      require("nvim-treesitter").install(parsers)
+
+      ---@param buf integer
+      ---@param language string
+      local function treesitter_try_attach(buf, language)
+        if not vim.treesitter.language.add(language) then
+          return
+        end
+        vim.treesitter.start(buf, language)
+
+        -- enables treesitter based folds
+        -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        -- vim.wo.foldmethod = 'expr'
+
+        local has_indent_query = vim.treesitter.query.get(language, "indents") ~= nil
+
+        -- enables treesitter based indentation
+        if has_indent_query then
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end
+
+      local available_parsers = require("nvim-treesitter").get_available()
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          local buf, filetype = args.buf, args.match
+
+          local language = vim.treesitter.language.get_lang(filetype)
+          if not language then
+            return
+          end
+
+          local installed_parsers = require("nvim-treesitter").get_installed("parsers")
+
+          if vim.tbl_contains(installed_parsers, language) then
+            -- enable the parser if it is installed
+            treesitter_try_attach(buf, language)
+          elseif vim.tbl_contains(available_parsers, language) then
+            -- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
+            require("nvim-treesitter").install(language):await(function()
+              treesitter_try_attach(buf, language)
+            end)
+          else
+            -- try to enable treesitter features in case the parser exists but is not available from `nvim-treesitter`
+            treesitter_try_attach(buf, language)
+          end
+        end,
+      })
+    end,
+  },
+}
