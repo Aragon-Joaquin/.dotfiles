@@ -85,20 +85,7 @@ return {
         bashls = { filetypes = { "sh", "zsh", "bash" } },
         tombi = {},
         pyright = {},
-        -- gopls = {},
-        -- basedpyright = {},
-        --[[ ts_ls = {
-          init_options = {
-            preferences = {
-              disableSuggestions = true,
-            },
-          },
-        }, ]]
-        -- eslint = {},
-        -- rust_analyzer = {},
-        -- ty = {},
-        --[[ html = {},
-        cssls = {}, ]]
+        gopls = {},
       },
     },
     config = function(_, opts)

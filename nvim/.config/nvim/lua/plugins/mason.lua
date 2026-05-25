@@ -54,6 +54,9 @@ return {
           "staticcheck",
           "goimports",
           "gofumpt",
+
+          --make
+          "checkmake",
         },
       })
     end,

@@ -29,6 +29,7 @@ local parsers = {
   -- added
   "scheme",
   "go",
+  "make",
 }
 
 return {

@@ -23,6 +23,9 @@ vim.opt.cmdheight = 0 -- disables the cmd status line
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
+vim.opt.tabstop = 4 --stop tabbing after 4 spaces
+vim.opt.shiftwidth = 4 --indent of 4 spaces
+
 vim.opt.number = true -- show line numbers
 vim.opt.relativenumber = true -- show relative numbers
 
