@@ -11,7 +11,6 @@ return {
       make = { "checkmake" },
 
       bash = { "shellcheck" },
-      sh = { "shellcheck" },
 
       go = { "staticcheck" },
     }
