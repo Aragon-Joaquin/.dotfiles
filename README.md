@@ -12,6 +12,7 @@
 
 - **global**: used by the rest of the profiles. if a specific folder has a duplicate package inside (e.x.: like tmux) then i would recommend to use the tmux from that profile and not from the global... but do whatever you want to!
 - **desktop**: my main pc config
+- **minimal**: just minimal config for low end devices, it mostly consist of vendoring
 
 #### COPYING CONFIG
 
