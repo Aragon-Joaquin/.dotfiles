@@ -1,42 +1,47 @@
-# Voidlinux dotfiles for non-programming usage.
-**i did not configure anything yet**
+# Hanako Dotfiles
 
-
-adding these .dotfiles later on:
+#### TODO
 - mangowm
 - waybar
 - qutebrowser
 - niri (yes i use two window managers)
 - and idk, i'll be updating the current ones
 
----
 
-this is a .dotfiles folder of my arch config just to manage them between computers easily
+#### PROFILES CONVENTIONS
+
+- **global**: used by the rest of the profiles. if a specific folder has a duplicate package inside (e.x.: like tmux) then i would recommend to use the tmux from that profile and not from the global... but do whatever you want to!
+- **desktop**: my main pc config
+
+#### COPYING CONFIG
 
 using with gnu stow (ln -s)
 
-## how to use it
-
-#### if want to install my configs
-
 1. go to $HOME path and clone the repo (or fork it)
 
-2. install [gnu stow](https://www.gnu.org/software/stow/) (with arch: sudo pacman -S stow)
+2. install [gnu stow](https://www.gnu.org/software/stow/) (with arch: sudo pacman -S stow, or void: sudo xbps-install -Su stow)
 
 3. delete or move PREVIOUS folders to another location
    - (if installing nvim, go to ~/.config/nvim and delete its containing files)
 
-4. in the .dotfiles folder, use:
+4. in the .dotfiles folder, STAY ON ROOT, and use:
+
+> [!IMPORTANT]
+> cd into .dotfiles AND EXECUTE THE FOLLOWING COMMANDS FROM THERE
 
 ```sh
-$ stow folder #ex: stow nvim
+$ stow -d profile -t ~ config 
+```
+
+example: 
+```sh
+$ stow -d desktop -t ~ nvim
 ```
 
 5. now that folder is a reference to your config. you can change whatever you want and it'll be reflected
 
----
 
-#### if want to add a new config
+#### ADDING CONFIG
 
 1. create a .dotfiles folder on $HOME path
 
