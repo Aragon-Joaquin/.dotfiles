@@ -1,22 +1,9 @@
 *.out
+*.o
 
 #avoid patches output
 *.rej
 *.orig
-
-
-#dmenu
-dmenu
+*stest
 stest
 
-#dwm
-dwm
-
-#dwmstatus
-dwmstatus
-
-#nnn
-nnn
-
-#st
-st
