@@ -1,0 +1,22 @@
+*.out
+
+#avoid patches output
+*.rej
+*.orig
+
+
+#dmenu
+dmenu
+stest
+
+#dwm
+dwm
+
+#dwmstatus
+dwmstatus
+
+#nnn
+nnn
+
+#st
+st
