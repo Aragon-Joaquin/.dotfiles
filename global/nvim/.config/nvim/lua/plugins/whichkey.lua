@@ -35,8 +35,12 @@ return {
     },
     keys = function()
       local wk = require("which-key")
+
+      --telescope
       wk.add({
-        { "<leader>s", group = "telescope", mode = "n" },
+        { "<leader>s", group = "telescope", mode = { "n" } },
+        { "<leader>l", group = "LazyGit", mode = { "n" } },
+        { "gr", group = "LSP Actions", mode = { "n" } },
       })
     end,
   },
