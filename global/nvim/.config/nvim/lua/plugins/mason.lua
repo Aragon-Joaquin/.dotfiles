@@ -29,6 +29,7 @@ return {
           "clangd",
           "pyright",
           "gopls",
+          "nim_langserver",
         },
       })
 

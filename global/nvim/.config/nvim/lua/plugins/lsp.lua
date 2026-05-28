@@ -86,6 +86,7 @@ return {
         tombi = {},
         pyright = {},
         gopls = {},
+        nim_langserver = {},
       },
     },
     config = function(_, opts)

@@ -1,1 +1,69 @@
-<h3>On construction!</h3>
+<style>
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hanako</title>
+</head>
+<body>
+	<style>
+		:root {
+			--main-color: #cbc;
+			--unfocus-color: #c6c;
+			--bg-color: #1f1f1f;
+			--fg-color: #303030;
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			font-family: "IosevkaTerm Nerd Font", monospace;
+		}
+
+		body {
+			background: var(--bg-color);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100dvh;
+			width: 100dvw;
+			overflow: hidden;
+		}
+
+		#container {
+			display: flex;
+			gap: 15px;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: var(--fg-color);
+			padding: 50px 100px;
+			border-radius: 5px;
+
+			& > p {
+				color: var(--unfocus-color);
+				font-weight: 600;
+				text-decoration: underline;
+			}
+
+			& > h3 {
+				font-weight: 500;
+				color: var(--main-color);
+				font-size: 5rem;
+			}
+
+		}
+	</style>
+		<span id="container">
+			<h3>
+				Hanako
+			</h3>
+			<p>On construction ;3</p>
+		</span>
+</body>
+</html>
+

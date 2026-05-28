@@ -30,55 +30,10 @@ local parsers = {
   "scheme",
   "go",
   "make",
+  "css",
 }
 
 return {
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   lazy = false,
-  --   build = ":TSUpdate",
-  --   opts = {
-  --
-  --     indent = { enable = true }, ---@type lazyvim.TSFeat
-  --     highlight = { enable = true }, ---@type lazyvim.TSFeat
-  --     folds = { enable = true }, ---@type lazyvim.TSFeat
-  --     auto_install = true,
-  --     ensure_installed = {
-  --       --default
-  --       "bash",
-  --       "c",
-  --       "diff",
-  --       "html",
-  --       "javascript",
-  --       "jsdoc",
-  --       "json",
-  --       "lua",
-  --       "luadoc",
-  --       "luap",
-  --       "markdown",
-  --       "markdown_inline",
-  --       "printf",
-  --       "python",
-  --       "query",
-  --       "regex",
-  --       "toml",
-  --       "tsx",
-  --       "typescript",
-  --       "vim",
-  --       "vimdoc",
-  --       "xml",
-  --       "yaml",
-  --
-  --       -- added
-  --       "scheme",
-  --       "go",
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     require("nvim-treesitter").setup(opts)
-  --   end,
-  -- },
-
   --NOTE: kickstarter treesitter config... it works for them...
   {
     "nvim-treesitter/nvim-treesitter",
