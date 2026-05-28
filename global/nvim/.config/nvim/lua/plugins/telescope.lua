@@ -8,6 +8,27 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
 
+    opts = function()
+      local actions = require("telescope.actions")
+      return {
+        defaults = {
+          mappings = {
+            i = {
+              ["<C-d>"] = actions.delete_buffer,
+            },
+            n = {
+              ["d"] = actions.delete_buffer,
+            },
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = false,
+          },
+        },
+      }
+    end,
+
     keys = function()
       local builtin = require("telescope.builtin")
 
@@ -24,6 +45,10 @@ return {
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
       vim.keymap.set("n", "<leader>sm", "<cmd>Telescope man_pages<cr>", { desc = "Telescope help tags" })
+
+      vim.keymap.set("n", "<leader>sn", function()
+        builtin.find_files({ cwd = "~/.config/nvim" })
+      end, { desc = "Telescope nvim .files" })
 
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
       vim.api.nvim_create_autocmd("LspAttach", {

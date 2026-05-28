@@ -3,6 +3,11 @@ config.load_autoconfig()
 
 c.tabs.show = 'always'
 c.tabs.position = "left"
+c.tabs.background = False
+
+#c.window.transparent = True
+
+c.session.lazy_restore = True
 
 c.colors.webpage.darkmode.enabled = True
 
