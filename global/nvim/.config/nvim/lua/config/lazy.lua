@@ -14,25 +14,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- mine
 vim.g.mapleader = " " -- leader key is SPACE
-vim.opt.clipboard = "unnamedplus" -- copies the nvim buffer to the clipboard ("wl-copy" needed atleast on wayland)
-vim.opt.fillchars = { eob = " " } -- hides the "~" on blank lines
-vim.opt.cmdheight = 0 -- disables the cmd status line
-
-vim.opt.spell = true
-vim.opt.spelllang = "en_us"
-
-vim.opt.tabstop = 4 --stop tabbing after 4 spaces
-vim.opt.shiftwidth = 4 --indent of 4 spaces
-
-vim.opt.number = true -- show line numbers
-vim.opt.relativenumber = true -- show relative numbers
 
 require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+  change_detection = { notify = false },
   defaults = {
     lazy = false,
     version = false, -- always use the latest git commit

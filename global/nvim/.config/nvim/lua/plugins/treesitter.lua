@@ -31,6 +31,8 @@ local parsers = {
   "go",
   "make",
   "css",
+  "sql",
+  "asm",
 }
 
 return {

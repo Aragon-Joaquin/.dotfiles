@@ -87,6 +87,7 @@ return {
         pyright = {},
         gopls = {},
         nim_langserver = {},
+        postgres_lsp = {},
       },
     },
     config = function(_, opts)

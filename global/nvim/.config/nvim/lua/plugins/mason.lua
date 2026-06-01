@@ -30,6 +30,7 @@ return {
           "pyright",
           "gopls",
           "nim_langserver",
+          "postgres_lsp",
         },
       })
 
@@ -52,12 +53,14 @@ return {
           "black",
 
           -- go
-          "staticcheck",
           "goimports",
           "gofumpt",
 
           --make
           "checkmake",
+
+          --psql
+          "pgformatter",
         },
       })
     end,
