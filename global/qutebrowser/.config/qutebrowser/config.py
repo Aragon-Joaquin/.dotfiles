@@ -4,6 +4,7 @@ config.load_autoconfig()
 c.tabs.show = 'always'
 c.tabs.position = "left"
 c.tabs.background = False
+#c.tabs.title.format = "{relative_index} {current_title}"
 
 #c.window.transparent = True
 
