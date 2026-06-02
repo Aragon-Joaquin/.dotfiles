@@ -39,7 +39,8 @@ return {
       --telescope
       wk.add({
         { "<leader>s", group = "telescope", mode = { "n" } },
-        { "<leader>l", group = "LazyGit", mode = { "n" } },
+        { "<leader>h", group = "Harpoon", mode = { "n" } },
+        { "<leader>x", group = "Trouble", mode = { "n" } },
         { "gr", group = "LSP Actions", mode = { "n" } },
       })
     end,
