@@ -66,9 +66,7 @@ return {
               },
               workspace = {
                 checkThirdParty = false,
-                library = {
-                  vim.env.VIMRUNTIME,
-                },
+                library = vim.api.nvim_get_runtime_file("", true), -- vim.env.VIMRUNTIME,
               },
               completion = { callSnippet = "Replace" },
               doc = {
@@ -86,7 +84,6 @@ return {
         tombi = {},
         pyright = {},
         gopls = {},
-        nim_langserver = {},
         postgres_lsp = {},
       },
     },

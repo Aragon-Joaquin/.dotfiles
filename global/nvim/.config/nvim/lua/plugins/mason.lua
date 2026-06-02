@@ -29,7 +29,6 @@ return {
           "clangd",
           "pyright",
           "gopls",
-          "nim_langserver",
           "postgres_lsp",
         },
       })

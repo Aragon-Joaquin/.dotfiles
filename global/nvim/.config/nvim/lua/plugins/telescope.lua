@@ -44,7 +44,7 @@ return {
       vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
-      vim.keymap.set("n", "<leader>sm", "<cmd>Telescope man_pages<cr>", { desc = "Telescope help tags" })
+      vim.keymap.set("n", "<leader>sm", "<cmd>Telescope man_pages<cr>", { desc = "Telescope man" })
 
       vim.keymap.set("n", "<leader>sn", function()
         builtin.find_files({ cwd = "~/.config/nvim" })

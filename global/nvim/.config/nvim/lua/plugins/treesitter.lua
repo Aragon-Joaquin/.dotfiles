@@ -57,12 +57,15 @@ return {
         -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
         -- vim.wo.foldmethod = 'expr'
 
-        local has_indent_query = vim.treesitter.query.get(language, "indents") ~= nil
+        --NOTE: actually made my indents worse.
+        --try to figure out more treesitter and configure it as i would like
+
+        -- local has_indent_query = vim.treesitter.query.get(language, "indents") ~= nil
 
         -- enables treesitter based indentation
-        if has_indent_query then
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end
+        -- if has_indent_query then
+        --   vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        -- end
       end
 
       local available_parsers = require("nvim-treesitter").get_available()
