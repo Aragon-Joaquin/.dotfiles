@@ -33,3 +33,10 @@ vim.opt.fillchars = { eob = " " } -- hides the "~" on blank lines
 -- programming experience???? utils bro
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
+
+--auto read
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
+})
