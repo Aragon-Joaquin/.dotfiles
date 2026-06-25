@@ -1,3 +1,55 @@
+local servers_config = {
+  clangd = {
+    -- Fix clangd offset encoding
+    capabilities = { offsetEncoding = { "utf-16" } },
+    cmd = {
+      "clangd",
+      "--clang-tidy",
+      "--fallback-style=Google",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--header-insertion=iwyu",
+    },
+    init_options = {
+      usePlaceholders = true,
+      completeUnimported = true,
+      clangdFileStatus = true,
+    },
+  },
+  lua_ls = {
+    log_level = 0,
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+          path = {
+            "lua/?.lua",
+            "lua/?/init.lua",
+          },
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = vim.api.nvim_get_runtime_file("", true), -- vim.env.VIMRUNTIME,
+        },
+        completion = { callSnippet = "Replace" },
+        doc = {
+          privateName = { "^_" },
+        },
+        hint = {
+          enable = true,
+          arrrayIndex = "Disable",
+        },
+      },
+    },
+  },
+  rumdl = {},
+  bashls = { filetypes = { "sh", "zsh", "bash" } },
+  tombi = {},
+  pyright = {},
+  gopls = {},
+  postgres_lsp = {},
+  docker_language_server = {},
+}
 return {
   {
     "neovim/nvim-lspconfig",
@@ -35,60 +87,10 @@ return {
           },
         },
       },
-      servers = {
-        clangd = {
-          -- Fix clangd offset encoding
-          capabilities = { offsetEncoding = { "utf-16" } },
-          cmd = {
-            "clangd",
-            "--clang-tidy",
-            "--fallback-style=Google",
-            "--completion-style=detailed",
-            "--function-arg-placeholders",
-            "--header-insertion=iwyu",
-          },
-          init_options = {
-            usePlaceholders = true,
-            completeUnimported = true,
-            clangdFileStatus = true,
-          },
-        },
-        lua_ls = {
-          log_level = 0,
-          settings = {
-            Lua = {
-              runtime = {
-                version = "LuaJIT",
-                path = {
-                  "lua/?.lua",
-                  "lua/?/init.lua",
-                },
-              },
-              workspace = {
-                checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true), -- vim.env.VIMRUNTIME,
-              },
-              completion = { callSnippet = "Replace" },
-              doc = {
-                privateName = { "^_" },
-              },
-              hint = {
-                enable = true,
-                arrrayIndex = "Disable",
-              },
-            },
-          },
-        },
-        rumdl = {},
-        bashls = { filetypes = { "sh", "zsh", "bash" } },
-        tombi = {},
-        pyright = {},
-        gopls = {},
-        postgres_lsp = {},
-      },
+      servers = servers_config,
     },
     config = function(_, opts)
-      for server, config in pairs(opts.servers) do
+      for server, config in pairs(servers_config) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         vim.lsp.enable(server)
 
