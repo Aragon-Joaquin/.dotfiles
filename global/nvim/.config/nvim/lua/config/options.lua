@@ -14,6 +14,7 @@ vim.opt.termguicolors = true
 vim.opt.winborder = "rounded"
 vim.opt.wrap = true --textwrap
 vim.opt.cmdheight = 0 -- disables the cmd status line
+-- vim.opt.colorcolumn = "80"
 
 -- recovery
 vim.opt.undofile = true --WARN: this caused me the worst of all of my fears
@@ -32,7 +33,11 @@ vim.opt.fillchars = { eob = " " } -- hides the "~" on blank lines
 
 -- programming experience???? utils bro
 vim.opt.smartindent = true
+vim.opt.autoindent = true
 vim.opt.ignorecase = true
+-- vim.opt.smartcase = true
+vim.opt.scrolloff = 8 --keep the cursors 8 rows from top/bot
+vim.lsp.inlay_hint.enable(true)
 
 --auto read
 vim.o.autoread = true

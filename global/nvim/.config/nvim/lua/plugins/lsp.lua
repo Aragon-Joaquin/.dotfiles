@@ -49,6 +49,7 @@ local servers_config = {
   gopls = {},
   postgres_lsp = {},
   docker_language_server = {},
+  svelte = {},
 }
 return {
   {

@@ -35,7 +35,7 @@ return {
         },
       },
 
-      fuzzy = { implementation = "rust" },
+      fuzzy = { implementation = "lua" },
     },
   },
 }

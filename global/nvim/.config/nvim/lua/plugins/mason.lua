@@ -30,6 +30,7 @@ return {
           "pyright",
           "gopls",
           "postgres_lsp",
+          "svelte",
         },
       })
 
