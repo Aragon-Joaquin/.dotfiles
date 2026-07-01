@@ -75,6 +75,10 @@ static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_r, spawn, {.v = dmenucmd}},
     {MODKEY, XK_q, spawn, {.v = termcmd}},
+    {MODKEY, XK_Print, spawn,
+     SHCMD("scrot -z ~/Pictures/Screenshots/%Y-%m-%d-%H%M%S_scrot.png")},
+    {MODKEY | ShiftMask, XK_Print, spawn,
+     SHCMD("scrot -zs ~/Pictures/Screenshots/%Y-%m-%d-%H%M%S_scrot.png")},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
