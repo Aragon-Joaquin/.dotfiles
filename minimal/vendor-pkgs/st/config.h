@@ -7,7 +7,7 @@
  */
 #include <wchar.h>
 static char* font =
-    "IosevkaTerm Nerd Font:pixelsize=13:antialias=true:autohint=true";
+    "IosevkaTerm Nerd Font:pixelsize=17:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*

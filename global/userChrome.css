@@ -2,7 +2,7 @@
 * Hide sidebar-panel-header (sidebar.revamp: true)
 */
 #sidebar-panel-header {
-  display: none;
+  display: none !important;
 }
 
 /**
@@ -33,6 +33,10 @@
 
   #sidebar-box {
     padding: 0 !important;
+    position: relative;
+    width: 250px !important;
+    max-width: 250px !important;
+    z-index: 1;
   }
 
   #sidebar-box #sidebar {
