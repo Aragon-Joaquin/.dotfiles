@@ -31,6 +31,7 @@ return {
           "gopls",
           "postgres_lsp",
           "svelte",
+          "laravel_ls",
         },
       })
 

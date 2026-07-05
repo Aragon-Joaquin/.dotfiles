@@ -50,7 +50,10 @@ local servers_config = {
   postgres_lsp = {},
   docker_language_server = {},
   svelte = {},
+  laravel_ls = {},
+  phpactor = {}
 }
+
 return {
   {
     "neovim/nvim-lspconfig",

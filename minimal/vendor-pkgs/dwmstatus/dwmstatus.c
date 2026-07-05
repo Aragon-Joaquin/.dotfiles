@@ -180,6 +180,7 @@ int main(void) {
   char* kbmap;
   char* surfs;
   char* memes;
+  char* uptime;
 
   if (!(dpy = XOpenDisplay(NULL))) {
     fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -199,10 +200,11 @@ int main(void) {
     memes = execscript("meme-status");
     t0 = gettemperature("/sys/devices/virtual/thermal/thermal_zone0", "temp");
     t1 = gettemperature("/sys/devices/virtual/thermal/thermal_zone1", "temp");
+    uptime = execscript("uptime -p");
 
-    status =
-        smprintf("S:%s M:%s K:%s T:%s|%s L:%s B0:%s B1:%s A:%s U:%s %s", surfs,
-                 memes, kbmap, t0, t1, avgs, bat, bat2, tmar, tmutc, tmbln);
+    status = smprintf(
+        " %s ~ S:%s M:%s K:%s T:%s|%s L:%s B0:%s B1:%s A:%s U:%s %s", uptime,
+        surfs, memes, kbmap, t0, t1, avgs, bat, bat2, tmar, tmutc, tmbln);
     setstatus(status);
 
     free(surfs);

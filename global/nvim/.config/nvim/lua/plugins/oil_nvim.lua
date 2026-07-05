@@ -10,7 +10,7 @@ return {
       },
       columns = {
         "icon",
-        -- "permissions",
+        "permissions",
         "size",
         -- "mtime",
       },
