@@ -3,6 +3,7 @@
  * by 20h
  */
 
+#include <locale.h>
 #define _BSD_SOURCE
 #include <X11/Xlib.h>
 #include <stdarg.h>
@@ -17,8 +18,6 @@
 #include <unistd.h>
 
 char* tzargentina = "America/Buenos_Aires";
-char* tzutc = "UTC";
-char* tzberlin = "Europe/Berlin";
 
 static Display* dpy;
 
@@ -172,15 +171,11 @@ int main(void) {
   char* avgs;
   char* bat;
   char* bat2;
-  char* tmar;
-  char* tmutc;
   char* tmbln;
   char* t0;
   char* t1;
-  char* kbmap;
-  char* surfs;
-  char* memes;
   char* uptime;
+  char* mem_used;
 
   if (!(dpy = XOpenDisplay(NULL))) {
     fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -191,32 +186,22 @@ int main(void) {
     avgs = loadavg();
     bat = getbattery("/sys/class/power_supply/BAT0");
     bat2 = getbattery("/sys/class/power_supply/BAT1");
-    tmar = mktimes("%H:%M", tzargentina);
-    tmutc = mktimes("%H:%M", tzutc);
-    tmbln = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzberlin);
-    kbmap = execscript(
-        "setxkbmap -query | grep layout | cut -d':' -f 2- | tr -d ' '");
-    surfs = execscript("surf-status");
-    memes = execscript("meme-status");
     t0 = gettemperature("/sys/devices/virtual/thermal/thermal_zone0", "temp");
     t1 = gettemperature("/sys/devices/virtual/thermal/thermal_zone1", "temp");
     uptime = execscript("uptime -p");
+    tmbln = mktimes("%W %a %H:%M %Z%B", mktimes("%H:%M", tzargentina));
+    mem_used = execscript("free -h | awk '/^Mem:/{print $3\"/\"$2}'");
 
     status = smprintf(
-        " %s ~ S:%s M:%s K:%s T:%s|%s L:%s B0:%s B1:%s A:%s U:%s %s", uptime,
-        surfs, memes, kbmap, t0, t1, avgs, bat, bat2, tmar, tmutc, tmbln);
+        " %s ~ T:%s|%s \uefc5 %s \uf4bc [%s] \uf240 [B0:%s B1:%s] \uf017 %s",
+        uptime, t0, t1, mem_used, avgs, bat, bat2, tmbln);
     setstatus(status);
 
-    free(surfs);
-    free(memes);
-    free(kbmap);
     free(t0);
     free(t1);
     free(avgs);
     free(bat);
     free(bat2);
-    free(tmar);
-    free(tmutc);
     free(tmbln);
     free(status);
   }
