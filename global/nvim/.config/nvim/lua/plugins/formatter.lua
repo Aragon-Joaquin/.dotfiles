@@ -6,6 +6,7 @@ return {
         lua = { "stylua" },
         json = { "jq" },
         sql = { "pg_format", "pg_formatter" },
+        nix = { "nixfmt" },
       },
       format_on_save = {
         timeout_ms = 500,
