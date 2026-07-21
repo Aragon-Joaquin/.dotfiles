@@ -17,11 +17,21 @@
     userEmail = "blizzardrandom@gmail.com";
   };
 
+  programs.delta = {
+    enable = true;
+    options = {
+      side-by-side = true;
+      navigate = true;
+      line-numbers = true;
+    };
+  };
+
   programs.bash.enable = true;
   programs.neovim.plugins = [
     pkgs.vimPlugins.nvim-treesitter
   ];
 
+  #NOTE: copy from config
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "/home/hanako/.dotfiles/global/nvim/.config/nvim";
     recursive = true;
@@ -42,10 +52,8 @@
     recursive = true;
   };
 
-  xdg.configFile."tmux" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/home/hanako/.dotfiles/global/tmux";
-    recursive = true;
-  };
+  home.file.".tmux.conf".source =
+    config.lib.file.mkOutOfStoreSymlink "/home/hanako/.dotfiles/global/tmux/.tmux.conf";
 
   xdg.configFile."alacritty" = {
     source = config.lib.file.mkOutOfStoreSymlink "/home/hanako/.dotfiles/global/alacritty/.config/alacritty";

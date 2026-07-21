@@ -23,7 +23,10 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
     config = {
       common = {
         default = [
@@ -43,6 +46,7 @@
       vpl-gpu-rt
     ];
   };
+  hardware.pulseaudio.enable = false;
 
   fonts.packages = with pkgs; [
     nerd-fonts.iosevka-term
@@ -69,8 +73,9 @@
   };
 
   security.rtkit.enable = true;
+
   services.pipewire = {
-    enable = true; # if not already enabled
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -111,6 +116,8 @@
     fd
     gnumake
     tree-sitter
+    git
+    delta
 
     #languages
     gcc
@@ -145,6 +152,12 @@
   programs.mangowc = {
     enable = true;
   };
+
+  # vim > nano
+  programs.vim.enable = true;
+  environment.variables.EDITOR = "vim";
+  programs.nano.enable = false;
+
   programs.firefox.enable = true;
 
   #NOTE: services
