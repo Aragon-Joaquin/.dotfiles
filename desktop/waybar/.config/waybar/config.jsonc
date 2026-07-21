@@ -15,7 +15,7 @@
 	],
 	"modules-right": [
 		"custom/uptime",
-		"pulseaudio",
+		//"pulseaudio",
 		"network",
 		"cpu",
 		"memory",
@@ -112,7 +112,8 @@
 		"on-click": "pavucontrol"
 	},
 	"custom/uptime": {
-		"exec": "uptime -p | sed 's/up //'",
+// https://stackoverflow.com/questions/28353409/bash-format-uptime-to-show-days-hours-minutes
+		"exec": "uptime | sed -E 's/^[^,]*up *//; s/, *[[:digit:]]* users?.*//; s/min/minutes/; s/([[:digit:]]+):0?([[:digit:]]+)/\\1 hours, \\2 minutes/'",
 		"interval": 60,
 		//manual padding for the format until i can add a margin without overriding everything
 		"format": " {}"
