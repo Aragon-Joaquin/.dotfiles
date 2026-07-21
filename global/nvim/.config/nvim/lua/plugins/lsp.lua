@@ -51,7 +51,8 @@ local servers_config = {
   docker_language_server = {},
   svelte = {},
   laravel_ls = {},
-  phpactor = {}
+  phpactor = {},
+  vue_ls = {},
 }
 
 return {
