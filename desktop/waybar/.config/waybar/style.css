@@ -1,16 +1,17 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: 'Inconsolata NerdFont', Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: 'Inconsolata NerdFont', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  /* 13px for <1920x1080 resolutions */
 }
 
 window#waybar {
-    background-color: transparent;
-    color: #ffffff;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 /*
@@ -24,42 +25,43 @@ window#waybar.solo {
 
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-    transition: all 0.2s ease-in-out;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+  transition: all 0.2s ease-in-out;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+  background: inherit;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused, #workspaces button.active {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+#workspaces button.focused,
+#workspaces button.active {
+  background-color: #64727D;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: #eb4d4b;
 }
 
 #mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+  background-color: #64727D;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #clock,
@@ -80,11 +82,11 @@ button:hover {
 #power-profiles-daemon,
 #mpd,
 #mpris {
-    padding: 3px 10px;
-    margin: 2px 2px;
-    border-radius: 6px;
-    color: #ffffff;
-    transition: background-color 0.2s ease-in-out;
+  padding: 3px 10px;
+  margin: 2px 2px;
+  border-radius: 6px;
+  color: #ffffff;
+  transition: background-color 0.2s ease-in-out;
 }
 
 #clock:hover,
@@ -105,41 +107,38 @@ button:hover {
 #power-profiles-daemon:hover,
 #mpd:hover,
 #mpris:hover {
-	background-color: #33363a;
+  background-color: #33363a;
 }
 
 #window,
-#workspaces {
-}
+#workspaces {}
 
-#window > *:last-child {
-	margin: 0px 4px;
-	padding: 0px 4px;
+#window>*:last-child {
+  margin: 0px 4px;
+  padding: 0px 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-}
+.modules-left>widget:first-child>#workspaces {}
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-}
+.modules-right>widget:last-child>#workspaces {}
 
-.modules-right > *:first-child {}
+.modules-right>*:first-child {}
 
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 .modules-right,
 .modules-center,
 .modules-left {
-	border: 2px solid #262c36;
-	background-color: #0d1117;
-	margin: 2px 2px;
-	border-radius: 10px;
+  border: 2px solid #262c36;
+  background-color: #0d1117;
+  margin: 2px 2px;
+  border-radius: 10px;
 }
 
 .modules-center {
-	min-width: 150px;
+  min-width: 150px;
 }
