@@ -3,7 +3,6 @@
  * by 20h
  */
 
-#include <locale.h>
 #define _BSD_SOURCE
 #include <X11/Xlib.h>
 #include <stdarg.h>
@@ -17,7 +16,7 @@
 #include <time.h>
 #include <unistd.h>
 
-char* tzargentina = "America/Buenos_Aires";
+char* tzargentina = "America/Argentina/Buenos_Aires";
 
 static Display* dpy;
 
