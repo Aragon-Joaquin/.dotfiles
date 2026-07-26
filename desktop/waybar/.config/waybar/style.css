@@ -89,6 +89,33 @@ button:hover {
   transition: background-color 0.2s ease-in-out;
 }
 
+#battery.bat0,
+#battery.bat1 {
+  padding: 3px 5px;
+  margin: 0px 1px;
+}
+
+#battery.bat0.warning,
+#battery.bat1.warning {
+  color: #d08770;
+}
+
+#battery.bat0.critical,
+#battery.bat1.critical {
+  color: #bf616a;
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.bat0.charging,
+#battery.bat1.charging {
+  color: #a3be8c;
+}
+
+
 #clock:hover,
 #battery:hover,
 #cpu:hover,

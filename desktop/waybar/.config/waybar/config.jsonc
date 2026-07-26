@@ -15,8 +15,10 @@
   ],
   "modules-right": [
     "custom/uptime",
-    //"pulseaudio",
-    "network",
+    "pulseaudio",
+    //    "network",
+    "battery#bat0",
+    "battery#bat1",
     "cpu",
     "memory",
     // "keyboard-state",
@@ -62,7 +64,7 @@
     "spacing": 10
   },
   "clock": {
-    // "timezone": "America/New_York",
+    "timezone": "America/Argentina/Buenos_Aires",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
   },
@@ -79,7 +81,7 @@
     "format": "{}% "
   },
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    // "interface": "wlp2*",
     "format": "\udb81\udf2e {bandwidthDownBits} \udb81\udf37 {bandwidthUpBits}",
     "format-wifi": "{essid} ({signalStrength}%) ",
     //"format-ethernet": "{ipaddr}/{cidr} ",
@@ -87,6 +89,46 @@
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "battery#bat0": {
+    "bat": "BAT0",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "[ {capacity}% {icon} ",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    //    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "battery#bat1": {
+    "bat": "BAT1",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}  ]",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    //   "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
