@@ -35,5 +35,5 @@
   "vague.nvim": { "branch": "main", "commit": "f9060fdaf7b20f68575d6f8214da6f1cf0c72825" },
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
-  "zk-nvim": { "branch": "main", "commit": "922134d8f95f0169bb572b09f2fa643573cb51f8" }
+  "zk": { "branch": "main", "commit": "922134d8f95f0169bb572b09f2fa643573cb51f8" }
 }
