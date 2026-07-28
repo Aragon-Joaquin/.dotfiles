@@ -14,6 +14,7 @@
     ./nixos/hardware-configuration.nix
   ];
 
+  #NOTE: system global
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -37,6 +38,20 @@
     };
   };
 
+  #keyboard & fonts
+  time.timeZone = "America/Argentina/Buenos_Aires";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "la-latin1";
+    useXkbConfig = false; # use xkb.options in tty.
+  };
+  fonts.packages = with pkgs; [
+    nerd-fonts.iosevka-term
+    nerd-fonts.inconsolata
+  ];
+
+  #NOTE:hardware
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
@@ -48,43 +63,26 @@
   };
   hardware.pulseaudio.enable = false;
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.iosevka-term
-    nerd-fonts.inconsolata
-  ];
-
+  #NOTE: boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/nvme0n1p1";
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelParams = [
+  #   "quiet"
+  #   "splash"
+  # ];
 
+  #NOTE: network
   networking.hostName = "nixos_btw";
   networking.networkmanager.enable = true; # nmcli & nmtui.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.enable = false;
 
-  time.timeZone = "America/Argentina/Buenos_Aires";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "la-latin1";
-    useXkbConfig = false; # use xkb.options in tty.
-  };
-
-  security.rtkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    #jack.enable = true;
-  };
-
-  services.libinput.enable = true;
-  services.xserver.xkb.layout = "latam";
-
+  #NOTE: users
   users.users.hanako = {
     isNormalUser = true;
     description = "Hanako Urawa";
@@ -141,6 +139,7 @@
     rofi
     rtkit
     ly
+    playerctl
 
     #userland
     alacritty
@@ -149,18 +148,27 @@
     pavucontrol
   ];
 
+  #NOTE: programs
   programs.mangowc = {
     enable = true;
+  };
+  # programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
 
   # vim > nano
   programs.vim.enable = true;
   environment.variables.EDITOR = "vim";
   programs.nano.enable = false;
-
   programs.firefox.enable = true;
 
   #NOTE: services
+  services.libinput.enable = true;
+  services.xserver.xkb.layout = "latam";
+  security.rtkit.enable = true;
+  services.dbus.enable = true;
   services.openssh.enable = true;
   services.displayManager = {
     ly = {
@@ -173,20 +181,14 @@
     };
   };
 
-  # boot.kernelParams = [
-  #   "quiet"
-  #   "splash"
-  # ];
-
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
+  services.pipewire = {
     enable = true;
-    enableSSHSupport = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    #jack.enable = true;
   };
-
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # networking.firewall.enable = false;
 
   nix.settings.experimental-features = [
     "nix-command"
