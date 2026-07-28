@@ -1,0 +1,67 @@
+[notebook]
+dir = "~/Notes"
+
+[note]
+language = "en"
+default-title = "no_title"
+filename = "{{id}}-{{title}}"
+extension = "md"
+
+template = "default.md"
+
+# Configure random ID generation.
+id-charset = "alphanum"
+id-length = 6
+id-case = "lower"
+
+[extra]
+author = "RandomBlizzard"
+
+
+[group.journal]
+paths = ["journal/weekly", "journal/daily"]
+
+[group.journal.note]
+filename = "{{format-date now}}"
+
+
+[format.markdown]
+hashtags = true
+colon-tags = true
+
+#[format.markdown.frontmatter]
+# Define custom keys and properties of the frontmatter block
+#creation-date-key = "created" # default is "date"
+#modification-date-key = "changed" # default is "modified"
+
+# EXTERNAL TOOLS
+[tool]
+editor = "nvim"
+shell = "/bin/bash"
+pager = "less -FIRX"
+fzf-preview = "bat -p --color always {-1}"
+
+# NAMED FILTERS
+[filter]
+recents = "--sort created- --created-after 'last two weeks'"
+
+[alias]
+# Edit the last modified note.
+edlast = "zk edit --limit 1 --sort modified- $@"
+
+# Edit the notes selected interactively among the notes created the last two weeks.
+recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+
+# Show a random note.
+lucky = "zk list --quiet --format full --sort random --limit 1"
+
+# LSP (EDITOR INTEGRATION)
+[lsp]
+
+[lsp.diagnostics]
+# Report titles of wiki-links as hints.
+wiki-title = "hint"
+# Warn for dead links between notes.
+dead-link = "error"
+# Warn when notes link here without backlinks.
+missing-backlink = { level = "warning", position = "bottom" }
