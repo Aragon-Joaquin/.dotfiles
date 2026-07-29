@@ -1,6 +1,15 @@
-{ config, pkgs, ... }:
+{
+  walker,
+  config,
+  pkgs,
+  ...
+}:
 
 {
+  imports = [
+    walker.homeManagerModules.default
+  ];
+
   programs.home-manager.enable = true;
   home.username = "hanako";
   home.homeDirectory = "/home/hanako";
@@ -30,6 +39,11 @@
   programs.neovim.plugins = [
     pkgs.vimPlugins.nvim-treesitter
   ];
+
+  programs.walker = {
+    enable = true;
+    runAsService = true;
+  };
 
   #NOTE: copy from config
   xdg.configFile."nvim" = {

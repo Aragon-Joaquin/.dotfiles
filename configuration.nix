@@ -91,6 +91,7 @@
       "audio"
       "video"
       "render"
+      "pipewire"
     ];
     shell = pkgs.bash;
     password = "password"; # change this with 'passwd'
@@ -144,8 +145,11 @@
     #userland
     alacritty
     firefox
+    sof-firmware # sound open firmware
     pipewire
     pavucontrol
+    awww
+    wl-clipboard
   ];
 
   #NOTE: programs
@@ -186,8 +190,15 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true;
-    #jack.enable = true;
+    # jack.enable = true;
+    systemWide = true;
+    extraConfig = {
+      pipewire."99-silent-bell.conf" = {
+        "context.properties" = {
+          "module.x11.bell" = false;
+        };
+      };
+    };
   };
 
   nix.settings.experimental-features = [
