@@ -42,7 +42,7 @@ return {
         { "<leader>h", group = "Harpoon", mode = { "n" } },
         { "<leader>x", group = "Trouble", mode = { "n" } },
         { "<leader>z", group = "ZK [NOTES]", mode = { "n", "x" } },
-        { "<leader>t", group = "Checkamate [TODOS]", mode = { "n", "v" } },
+        { "<leader>t", group = "Checkmate [TODOS]", mode = { "n", "v" } },
         { "gr", group = "LSP Actions", mode = { "n" } },
       })
     end,

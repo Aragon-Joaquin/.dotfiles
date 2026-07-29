@@ -95,20 +95,41 @@ return {
           modes = { "n" },
         },
       },
+
       metadata = {
+        -- Example: A @priority tag that has dynamic color based on the priority value
         priority = {
-          key = "<leader>tp",
+          style = function(context)
+            local value = context.value:lower()
+            if value == "high" then
+              return { fg = "#ff5555", bold = true }
+            elseif value == "medium" then
+              return { fg = "#ffb86c" }
+            elseif value == "low" then
+              return { fg = "#8be9fd" }
+            else -- fallback
+              return { fg = "#8be9fd" }
+            end
+          end,
+          get_value = function()
+            return "medium" -- Default priority
+          end,
+          choices = function()
+            return { "low", "medium", "high" }
+          end,
+          key = "<leader>t1",
           sort_order = 10,
           jump_to_on_insert = "value",
           select_on_insert = true,
         },
+        -- Example: A @started tag that uses a default date/time string when added
         started = {
           aliases = { "init" },
           style = { fg = "#9fd6d5" },
           get_value = function()
             return tostring(os.date("%m/%d/%y %H:%M"))
           end,
-          key = "<leader>ts",
+          key = "<leader>t2",
           sort_order = 20,
         },
         -- Example: A @done tag that also sets the todo item state when it is added and removed
@@ -118,7 +139,7 @@ return {
           get_value = function()
             return tostring(os.date("%m/%d/%y %H:%M"))
           end,
-          key = "<leader>td",
+          key = "<leader>t3",
           on_add = function(todo)
             require("checkmate").set_todo_state(todo, "checked")
           end,
@@ -126,6 +147,33 @@ return {
             require("checkmate").set_todo_state(todo, "unchecked")
           end,
           sort_order = 30,
+        },
+        -- WARN: custom!
+        vague = {
+          aliases = { "refine", "clarify" },
+          style = { fg = "#b91aec" },
+          get_value = function()
+            return tostring(os.date("%m/%d/%y %H:%M"))
+          end,
+          key = "<leader>t4",
+          sort_order = 40,
+        },
+        shelved = {
+          aliases = { "deprecated", "discarded", "paused" },
+          style = { fg = "#6272a4", bold = true },
+          get_value = function()
+            return 'Reason: ""'
+          end,
+          key = "<leader>t5",
+          sort_order = 50,
+          select_on_insert = true,
+
+          on_add = function(todo)
+            require("checkmate").set_todo_state(todo, "checked")
+          end,
+          on_remove = function(todo)
+            require("checkmate").set_todo_state(todo, "unchecked")
+          end,
         },
       },
     },
