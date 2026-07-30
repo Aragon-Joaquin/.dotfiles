@@ -96,6 +96,29 @@ return {
         },
       },
 
+      style = {
+        CheckmateOnHoldMarker = { fg = "#737aa2", bold = true },
+        CheckmateOnHoldMainContent = { fg = "#737aa2", strikethrough = true },
+      },
+
+      todo_states = {
+        -- we don't need to set the `markdown` field for `unchecked` and `checked` as these can't be overriden
+        unchecked = { marker = "□", order = 1 },
+        checked = { marker = "✔", order = 2 },
+        in_progress = {
+          marker = "◐",
+          markdown = ".",
+          type = "incomplete", -- Counts as "not done"
+          order = 50,
+        },
+        on_hold = {
+          marker = "",
+          markdown = "?", -- Saved as `- [?]`
+          type = "inactive",
+          order = 100,
+        },
+      },
+
       metadata = {
         -- Example: A @priority tag that has dynamic color based on the priority value
         priority = {
@@ -131,8 +154,7 @@ return {
           end,
           key = "<leader>t2",
           sort_order = 20,
-        },
-        -- Example: A @done tag that also sets the todo item state when it is added and removed
+        }, -- Example: A @done tag that also sets the todo item state when it is added and removed
         done = {
           aliases = { "completed", "finished" },
           style = { fg = "#96de7a" },
@@ -160,7 +182,7 @@ return {
         },
         shelved = {
           aliases = { "deprecated", "discarded", "paused" },
-          style = { fg = "#6272a4", bold = true },
+          style = { fg = "#6272a4", bold = true, strikethrough = false }, -- does not work :C
           get_value = function()
             return 'Reason: ""'
           end,
@@ -169,7 +191,7 @@ return {
           select_on_insert = true,
 
           on_add = function(todo)
-            require("checkmate").set_todo_state(todo, "checked")
+            require("checkmate").set_todo_state(todo, "on_hold")
           end,
           on_remove = function(todo)
             require("checkmate").set_todo_state(todo, "unchecked")
