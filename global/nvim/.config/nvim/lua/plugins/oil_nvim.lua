@@ -39,6 +39,10 @@ return {
 
     keys = function()
       vim.keymap.set("n", "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+      vim.keymap.set("n", "<leader>O", function()
+        vim.cmd("vsplit | wincmd l | vertical resize 60%")
+        require("oil").open()
+      end, { desc = "Spawn Oil in the left" })
     end,
   },
 }

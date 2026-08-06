@@ -45,3 +45,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   command = "if mode() != 'c' | checktime | endif",
   pattern = "*",
 })
+
+-- explore in nvim
+vim.g.netrw_liststyle = 3 --tree view
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+vim.g.netrw_browse_split = 0 -- open files in prev. window
+vim.g.netrw_altfile = 1

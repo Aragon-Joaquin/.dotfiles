@@ -1,11 +1,9 @@
 # Hanako Dotfiles
 
 #### TODO
-- mangowm
-- waybar
-- qutebrowser
-- niri (yes i use two window managers)
-- and idk, i'll be updating the current ones
+- [ ] improve existing configs
+- [ ] make nixos config for each one
+- [ ] put profiles contents within a .config??
 
 
 #### PROFILES CONVENTIONS
