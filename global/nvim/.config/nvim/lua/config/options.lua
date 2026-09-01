@@ -3,6 +3,7 @@
 
 -- etc
 vim.opt.clipboard = "unnamedplus" -- copies the nvim buffer to the clipboard ("wl-copy" needed atleast on wayland)
+vim.opt.mouse = "" -- i hate the mouse
 
 -- spelling
 vim.opt.spell = true

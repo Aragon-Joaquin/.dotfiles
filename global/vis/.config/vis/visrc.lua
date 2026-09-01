@@ -36,8 +36,8 @@ lspc.ls_map = {
     },
     formatting_options = { tabSize = 2, insertSpaces = true },
   },
-  python = {
-  name = "lua-language-server",
-  cmd = "lua-language-server",
-  },
+  zig = {
+    name = "zls",
+    cmd = "zls",
+  }
 }

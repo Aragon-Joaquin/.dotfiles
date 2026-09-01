@@ -32,11 +32,15 @@ return {
           "postgres_lsp",
           "svelte",
           "laravel_ls",
+          "roslyn_ls", --csharp
         },
       })
 
       require("mason-tool-installer").setup({
         ensure_installed = {
+          --everything
+          "semgrep",
+
           --shell
           "shellcheck",
           "shfmt",
@@ -62,6 +66,9 @@ return {
 
           --psql
           "pgformatter",
+
+          --c#
+          "csharpier",
         },
       })
     end,

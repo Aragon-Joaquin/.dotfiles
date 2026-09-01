@@ -33,6 +33,9 @@ local parsers = {
   "css",
   "sql",
   "asm",
+  "latex",
+  "scss",
+  "typst",
 }
 
 return {
