@@ -124,28 +124,29 @@ return {
         priority = {
           style = function(context)
             local value = context.value:lower()
-            if value == "high" then
+            if value == "crucial" then
+              return { fg = "#ff2052", bold = true, underline = true }
+            elseif value == "high" then
               return { fg = "#ff5555", bold = true }
             elseif value == "medium" then
               return { fg = "#ffb86c" }
             elseif value == "low" then
               return { fg = "#8be9fd" }
             else -- fallback
-              return { fg = "#8be9fd" }
+              return { fg = "#6272a4" }
             end
           end,
           get_value = function()
             return "medium" -- Default priority
           end,
           choices = function()
-            return { "low", "medium", "high" }
+            return { "low", "medium", "high", "crucial" }
           end,
           key = "<leader>t1",
           sort_order = 10,
           jump_to_on_insert = "value",
           select_on_insert = true,
-        },
-        -- Example: A @started tag that uses a default date/time string when added
+        }, -- Example: A @started tag that uses a default date/time string when added
         started = {
           aliases = { "init" },
           style = { fg = "#9fd6d5" },
