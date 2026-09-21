@@ -69,6 +69,11 @@ return {
 
           --c#
           "csharpier",
+
+          --js
+          -- "prettier",
+          "oxlint",
+          "oxfmt",
         },
       })
     end,

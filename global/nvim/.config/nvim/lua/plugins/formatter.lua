@@ -7,6 +7,12 @@ return {
         json = { "jq" },
         sql = { "pg_format", "pg_formatter" },
         nix = { "nixfmt" },
+        javascript = { "oxfmt", "prettier" },
+        typescript = { "oxfmt", "prettier" },
+        javascriptreact = { "oxfmt", "prettier" },
+        typescriptreact = { "oxfmt", "prettier" },
+        html = { "oxfmt", "prettier" },
+        css = { "oxfmt", "prettier" },
       },
       format_on_save = {
         timeout_ms = 500,

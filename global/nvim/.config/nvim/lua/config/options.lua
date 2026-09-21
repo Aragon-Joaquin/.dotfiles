@@ -38,7 +38,7 @@ vim.opt.autoindent = true
 vim.opt.ignorecase = true
 -- vim.opt.smartcase = true
 vim.opt.scrolloff = 8 --keep the cursors 8 rows from top/bot
-vim.lsp.inlay_hint.enable(true)
+--vim.lsp.inlay_hint.enable(true)
 
 --auto read
 vim.o.autoread = true

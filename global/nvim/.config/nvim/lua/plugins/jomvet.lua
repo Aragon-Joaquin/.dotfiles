@@ -1,4 +1,8 @@
+-- this is a custom plugin that im making (you dont probably have it yet)
+-- you can remove this file (jomvet.lua)
+
 return {
-  dir = "~/projects/jomvet.nvim",
+  enabled = false,
+  dir = "~/Desktop/jomvet.nvim",
   opts = {},
 }
