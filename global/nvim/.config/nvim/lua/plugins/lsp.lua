@@ -49,7 +49,12 @@ local servers_config = {
   gopls = {},
   postgres_lsp = {},
   docker_language_server = {},
-  svelte = {},
+  svelte = {
+    on_attach = function(client)
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end,
+  },
   laravel_ls = {},
   phpactor = {},
   vue_ls = {},

@@ -13,6 +13,7 @@ return {
         typescriptreact = { "oxfmt", "prettier" },
         html = { "oxfmt", "prettier" },
         css = { "oxfmt", "prettier" },
+        markdown = {},
       },
       format_on_save = {
         timeout_ms = 500,

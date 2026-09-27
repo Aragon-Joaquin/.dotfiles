@@ -20,6 +20,10 @@ return {
       -- C-e: Hide menu
       -- C-k: Toggle signature help (if signature.enabled = true)
       keymap = { preset = "default" },
+      signature = {
+        enabled = true,
+        window = { border = "single" },
+      },
 
       completion = { documentation = { auto_show = true } },
 

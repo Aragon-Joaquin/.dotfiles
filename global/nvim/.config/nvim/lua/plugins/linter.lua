@@ -9,7 +9,6 @@ return {
 
     lint.linters_by_ft = {
       make = { "checkmake" },
-
       bash = { "shellcheck" },
 
       -- go = { "staticcheck" },
