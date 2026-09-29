@@ -43,7 +43,8 @@ return {
         { "<leader>x", group = "Trouble", mode = { "n" } },
         { "<leader>z", group = "ZK [NOTES]", mode = { "n", "x" } },
         { "<leader>t", group = "Checkmate [TODOS]", mode = { "n", "v" } },
-        { "<leader>d", group = "diff/git", icon = "󰊢 " },
+        { "<leader>g", group = "diff/git", icon = "󰊢 " },
+        { "<leader>d", group = "Debugger" },
         { "gr", group = "LSP Actions", mode = { "n" } },
       })
     end,

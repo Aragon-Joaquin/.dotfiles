@@ -6,6 +6,7 @@ return {
       library = {
         { path = "${3rd}/luvit/library", words = { "vim%.uv" } },
         { path = "snacks.nvim", words = { "Snacks", "snacks" } },
+        { "nvim-dap-ui" },
       },
     },
   },

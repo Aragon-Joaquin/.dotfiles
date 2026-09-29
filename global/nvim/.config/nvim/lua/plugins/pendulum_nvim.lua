@@ -14,7 +14,7 @@ return {
         },
         filetype = {},
         project = {
-          "unknown_project", -- Exclude unknown (non-git) projects
+          -- "unknown_project", -- Exclude unknown (non-git) projects
         },
       },
     })
