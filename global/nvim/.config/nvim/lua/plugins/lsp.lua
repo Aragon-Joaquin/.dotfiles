@@ -58,6 +58,7 @@ local servers_config = {
   laravel_ls = {},
   phpactor = {},
   vue_ls = {},
+  hls = {},
 }
 
 return {

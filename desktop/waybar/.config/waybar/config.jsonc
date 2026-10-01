@@ -6,13 +6,8 @@
   // "width": 1280, // Waybar width
   "spacing": 6, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": [
-    "ext/workspaces",
-    "dwl/window"
-  ],
-  "modules-center": [
-    "mpris"
-  ],
+  "modules-left": ["ext/workspaces"],
+  "modules-center": ["mpris"],
   "modules-right": [
     "custom/uptime",
     "pulseaudio",
@@ -24,7 +19,7 @@
     // "keyboard-state",
     //"disk",
     "clock",
-    "tray"
+    "tray",
   ],
   //Modules configuration
   //NOTE: modules-left
@@ -32,7 +27,7 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
-    "format": "{name}"
+    "format": "{name}",
   },
   "keyboard-state": {
     "numlock": true,
@@ -40,8 +35,8 @@
     "format": "{name} {icon}",
     "format-icons": {
       "locked": "",
-      "unlocked": ""
-    }
+      "unlocked": "",
+    },
   },
   //NOTE: modules-center
   "mpris": {
@@ -51,34 +46,34 @@
     "format-stopped": "No Media Playing",
     "player-icons": {
       "default": "▶",
-      "mpv": "🎵"
+      "mpv": "🎵",
     },
     "status-icons": {
-      "paused": "⏸"
+      "paused": "⏸",
     },
-    "max-length": 40
+    "max-length": 40,
   },
   //NOTE: modules-right
   "tray": {
     // "icon-size": 21,
-    "spacing": 10
+    "spacing": 10,
   },
   "clock": {
     "timezone": "America/Argentina/Buenos_Aires",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}"
+    "format-alt": "{:%Y-%m-%d}",
   },
   "disk": {
     "interval": 30,
     "format": "{free} \uf0c7",
-    "path": "/"
+    "path": "/",
   },
   "cpu": {
     "format": "{usage}% ",
-    "tooltip": false
+    "tooltip": false,
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% ",
   },
   "network": {
     // "interface": "wlp2*",
@@ -88,47 +83,35 @@
     //"tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
   },
   "battery#bat0": {
     "bat": "BAT0",
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "[ {capacity}% {icon} ",
     "format-full": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     //    "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""],
   },
   "battery#bat1": {
     "bat": "BAT1",
     "states": {
       "good": 95,
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{capacity}% {icon}  ]",
     "format-full": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     //   "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""],
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -145,19 +128,15 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", ""],
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
   },
   "custom/uptime": {
     // https://stackoverflow.com/questions/28353409/bash-format-uptime-to-show-days-hours-minutes
     "exec": "uptime | sed -E 's/^[^,]*up *//; s/, *[[:digit:]]* users?.*//; s/min/minutes/; s/([[:digit:]]+):0?([[:digit:]]+)/\\1 hours, \\2 minutes/'",
     "interval": 60,
     //manual padding for the format until i can add a margin without overriding everything
-    "format": " {}"
-  }
+    "format": " {}",
+  },
 }
